@@ -46,9 +46,9 @@ echo ""
 
 # Groups #
 ##########
-groupadd -f admins 
-groupadd -f adm 
-groupadd -f vboxuser 
+groupadd -f admins
+groupadd -f adm
+groupadd -f vboxuser
 groupadd -f vagrant
 
 # my user #
@@ -62,28 +62,6 @@ echo "sthompson ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Extra directories #
 #####################
-mkdir /home/sthompson/bin
-mkdir -p /home/sthompson/build/{repos,src,bin}
-mkdir /home/sthompson/tmp
-
-# Copy vimrc #
-##############
-wget -O /home/sthompson/.vimrc https://www.dropbox.com/s/21z2qquqk0n9py8/vimrcplugins?dl=0
-
-# Install vim plugins #
-#######################
-echo "#!/bin/bash" > /home/sthompson/bin/vimplugin
-echo "vim +PluginInstall +qall" >> /home/sthompson/bin/vimplugin
-chown sthompson:sthompson/home/sthompson/bin/vimplugin
-sudo -H -u sthompson /home/sthompson/bin/vimplugin
-
-chown -R sthompson:sthompson /home/sthompson/*
-
-# Epoch time after last config #
-################################
-finishepoch=`date +%s`
-
-differenceinseconds=$((startingepoch - finishepoch))
-divider=60
-packageconfigtime=$((differenceinseconds / divider))
-echo "Package configuration took $packageconfigtime minutes"
+#mkdir /home/sthompson/bin
+#mkdir -p /home/sthompson/build/{repos,src,bin}
+#mkdir /home/sthompson/tmp
